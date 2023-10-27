@@ -1,0 +1,4 @@
+rafa,rafa8@gmail.com,$2y$10$wTcn85OKcX/eowGk.aTF2u/N4G1o3XZgG3ymeUTNLjDy/mocNbCxe
+rafa2,rafa5@gmail.com,$2y$10$pgFXzIdTtRKzaWSK/Gku/OpwuDLd3iLArGFdgOOnBJm9tmSoWwRbu
+rafa3,rafa3@gmail.com,$2y$10$V.u9gne0XL/9bxhAtzZzZ.Ok1I2MR8cAe5GghmJIrI5Xwvjc5b4Sa
+rafa4,rafa7@gmail.com,$2y$10$RCX.Xm9yWiy/57CtL93eSOgDAn1D2TgZzGiktFPuAsVUAsGFh8BBy
