@@ -42,6 +42,7 @@ $users = file('users.txt', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
             if ($isAdmin) {
                 echo "<td>";
                 echo "<a href='edit-user.php?username=$displayedUsername'>Edit </a>";
+                echo "<a href='create-user.php?username=$displayedUsername'>Create User </a>";
                 echo "<a href='delete.php?username=$displayedUsername'>Delete</a> | ";
                 echo "</td>";
             }
