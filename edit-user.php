@@ -10,15 +10,12 @@ $username = $_SESSION["username"];
 $isAdmin = ($username === "Rafa");
 
 if (!$isAdmin) {
-    // Redirect non-admin users to index.php
     header("Location: index.php");
     exit();
 }
 
-// Read user details from the file
 $users = file('users.txt', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 
-// Get the username from the URL parameter
 $editUsername = isset($_GET['username']) ? $_GET['username'] : null;
 
 // Find the user details to edit
@@ -32,28 +29,26 @@ foreach ($users as &$user) {
 }
 
 if (!$editUserDetails) {
-    // If user not found, redirect to index.php
     header("Location: index.php");
     exit();
 }
 
-// Handle form submission to update user details
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["update"])) {
-    // Retrieve updated details from the form
     $newEmail = $_POST['email'];
+    $newUsername = $_POST['username'];
+    $newPassword = $_POST['password'];
 
-    // Update the user details in the array
+    // Update user details
     $userIndex = array_search("$editUserDetails[storedUsername],$editUserDetails[storedEmail],$editUserDetails[storedPassword]", $users);
     if ($userIndex !== false) {
-        $users[$userIndex] = "$editUserDetails[storedUsername],$newEmail,$editUserDetails[storedPassword]";
+        unset($users[$userIndex]);
+        $users[] = "$newUsername,$newEmail,$newPassword";
+        file_put_contents('users.txt', implode("\n", $users));
+
+        $_SESSION['alert_message'] = "User $newUsername updated successfully!";
+        header("Location: index.php");
+        exit();
     }
-
-    // Save the updated user details back to the file
-    file_put_contents('users.txt', implode("\n", $users));
-
-    // Redirect back to the index page
-    header("Location: index.php");
-    exit();
 }
 ?>
 
